@@ -1,3 +1,20 @@
+[18,09,2016]
+A Recently change of protobuf(upgradet to 3.x) makes a gazebo denpencies can't be installed, due to the change of API.
+
+package-name:  ignition-transport
+
+solution: Manually apply [this](https://bitbucket.org/ignitionrobotics/ign-transport/pull-requests/173/support-for-compilations-with-protobuf3/diff) patch. Manually compile the package and brew link it.
+
+Pyqwt not found (maybe a recent change moves it to another brew tap? homebrew/boneyard)
+
+For a clean Mac without XCode.app installed, error "Python.h" not found as the compile CPPFLAGS leads to a non-exist folder.
+
+Quick solution: 
+* brew edit pyqwt => get the package download link and patch file(at bottom).
+* wget package.
+* apply patch. (according to the error output of brew install, follow all the commands there)
+* finally, modify the generated Makefile, change the path to brew python header folder.
+
 ros-install-osx   [![Build Status](https://travis-ci.org/mikepurvis/ros-install-osx.svg?branch=master)](https://travis-ci.org/mikepurvis/ros-install-osx)
 ===============
 
